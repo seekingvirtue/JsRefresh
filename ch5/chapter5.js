@@ -56,52 +56,52 @@
     console.log(fibonacciArray);
 }
 
-// console.log("PRACTICE EXERCISE 5.1 NUMBER GUESSING GAME");
-// {
+console.log("PRACTICE EXERCISE 5.1 NUMBER GUESSING GAME");
+{
 
-//     //generate a random number as the solution
-//     let solution = Math.floor(Math.random() * 6);
-//     //add a cheat for debugging
-//     console.log("The solutions is " + solution);
-//     //set the while loop condition
-//     let answerCorrect = false;
+    //generate a random number as the solution
+    let solution = Math.floor(Math.random() * 6);
+    //add a cheat for debugging
+    console.log("The solutions is " + solution);
+    //set the while loop condition
+    let answerCorrect = false;
     
-//     //ask the player for a number and evalutate to see if it is correct
-//     while (!answerCorrect) {
-//         //ask for the user's guess
-//         let userGuess = prompt("Enter a number between 0 and 5");
-//         /*
-//             check the user's input to see if it is allowed, 
-//             if it is allowed, check to see if it matches the solution number,
-//             if it does not match the solution number, ask the user to try again
-//         */
-//         if (Number(userGuess) > 5 || isNaN(userGuess)) {
-//             console.log("Thats not an allowed guess, please try again")
-//         } else if (Number(userGuess) === solution) {
-//             console.log("You win! " + solution + " was the right number");
-//             //if the answer is correct, break from the loop
-//             answerCorrect = true;
-//         } else {
-//             console.log("Thats incorrect please try again")
-//         }
-//     }
-// }
+    //ask the player for a number and evalutate to see if it is correct
+    while (!answerCorrect) {
+        //ask for the user's guess
+        let userGuess = prompt("Enter a number between 0 and 5");
+        /*
+            check the user's input to see if it is allowed, 
+            if it is allowed, check to see if it matches the solution number,
+            if it does not match the solution number, ask the user to try again
+        */
+        if (Number(userGuess) > 5 || isNaN(userGuess)) {
+            console.log("Thats not an allowed guess, please try again")
+        } else if (Number(userGuess) === solution) {
+            console.log("You win! " + solution + " was the right number");
+            //if the answer is correct, break from the loop
+            answerCorrect = true;
+        } else {
+            console.log("Thats incorrect please try again")
+        }
+    }
+}
 
 
-// //do while loops
-// {
-//     /*
-//         do {
-//             code to be exicuted once and iterated if the condition is true
-//         } while (condition)
-//     */
+//do while loops
+{
+    /*
+        do {
+            code to be exicuted once and iterated if the condition is true
+        } while (condition)
+    */
 
-//     let number;
-//     do {
-//         number = prompt("Please enter a number between 1 and 100: ");
-//     } while (!(number >= 0 && number < 100));
+    let number;
+    do {
+        number = prompt("Please enter a number between 1 and 100: ");
+    } while (!(number >= 0 && number < 100));
 
-// }
+}
 
 console.log("PRACTICE EXERCISE 5.2");
 {
