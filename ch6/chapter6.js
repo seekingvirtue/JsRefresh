@@ -100,6 +100,16 @@ console.log("PRACTICE EXERCISE 6.3");
     let number1 = 1
     let number2 = 2;
     // set up variable to hold the operator
-    let operation = "+";
-    // create a function 
+    let operation = "-";
+    // create a function that retrieves the values and operator, add or subtract accordingly
+    function addOrSubtract(num1, num2, operation) {
+        if (operation === "-") {
+            return Number(num1) - Number(num2);
+        } else {
+            return Number(num1) + Number(num2);
+        }
+    }
+    //log to console
+    console.log(addOrSubtract(number1, number2, operation));
 }
+
