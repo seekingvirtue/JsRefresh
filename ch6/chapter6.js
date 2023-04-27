@@ -113,3 +113,71 @@ console.log("PRACTICE EXERCISE 6.3");
     console.log(addOrSubtract(number1, number2, operation));
 }
 
+
+console.log("DEFAULT OR UNSUITABLE PARAMETERS");
+{
+    function addTwoNumbers(x, y) {
+        console.log(x + y);
+    }
+
+    // what happens when you call without parameters?
+    console.log(addTwoNumbers()); // NaN
+
+    // adding default parameters
+    function addTwoNumbersAgain(x = 3, y = 4) {
+        console.log(x + y);
+    }
+    addTwoNumbersAgain(); // 7
+    addTwoNumbersAgain(6, 6); // 12, notice the defaults were replaced.
+    addTwoNumbersAgain(10); // 14, notice only x was replaced.
+    addTwoNumbersAgain(3, 1, 3, 3, 3, 3, 3, 3, 9); // 4 notice the extra parameters are just ignored
+}
+
+console.log("SPECIAL FUNCTIONS AND OPERATORS");
+{
+    // lets look at some special ways to handle functions and some special operators
+    console.log("Arrow function styles");
+    console.log("Single line");
+    console.log(`
+        (param1, param2) => body of the function
+    `);
+    console.log("Without parameters");
+    console.log(`
+        () => body of function
+    `);
+    console.log("If only one parameter");
+    console.log(`
+        param1 => body of function
+    `);
+    console.log("Lastly, multiline function with multiple parameters");
+    console.log(`
+        (param1, param2) => {
+            line 1
+            line 2
+            line etc.
+        }
+    `);
+
+    // lets rewrite the following with an arrow function
+    function doingStuff(x) {
+        console.log(x);
+    }
+
+    //to rewrite as an arrow function you have to store it inside of a variable
+    let doingArrowStuff = x => console.log(x); //single parameter implementation
+    doingArrowStuff(); // no supplied arguement will return undefined
+    doingArrowStuff("I did an arrow thing.");
+
+    // further examples
+    let addTwoNumbers = (x, y) => console.log(x + y);
+    addTwoNumbers(5, 3);
+
+    let sayHi = () => console.log("hi");
+    sayHi();
+
+    // combine arrow function with built-in methods
+    const arr = ["squirrel", "alpaca", "buddy"];
+    arr.forEach(e => console.log(e));
+}
+
+console.log()
