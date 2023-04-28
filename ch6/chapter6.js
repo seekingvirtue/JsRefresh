@@ -180,4 +180,92 @@ console.log("SPECIAL FUNCTIONS AND OPERATORS");
     arr.forEach(e => console.log(e));
 }
 
-console.log()
+console.log("SPREAD OPERATOR");
+{
+    /*
+        indicated with an elipsis "..."
+        the operator spreads out the arguements or elements of an array
+    */
+   let spread = ["so", "much", "fun"];
+   let message = ["JavaScript", "is", ...spread, "and", "very", "powerful"]; //notice the elipsis
+
+   console.log(message);
+
+   for (let e in message) {
+    console.log(message[e]);
+   }
+
+   // using spread to send multiple arguements to a function
+   function addTwoNumbers(x, y) {
+    console.log(x + y);
+   }
+   let arr = [5, 9];
+   addTwoNumbers(...arr) // notice the spread operator again
+
+   // calling a function with multiple spread operators
+   function addFourNumbers(x, y, z, a) {
+    console.log(x + y + z + a);
+   }
+   let arr2 = [6, 7];
+   addFourNumbers(...arr, ...arr2) // notice two different arrays using the spread
+}
+
+console.log("REST PARAMETER");
+{
+    // similar to the spread operator
+    // allows us to send in any number of arguements and translates them into a parameter array
+    function functWithRest(param1, ...paramRest) { // notice the elipsis is now a parameter making it the REST operator
+        console.log(param1, paramRest);
+    }
+    functWithRest("hi", "there", "how are you?"); // notice three arguements, without the ...paramRest, the thrid would be ignored
+    // prints "hi ['there', 'how are you?']" notice the second parameter became an array
+}
+
+console.log("RETURNING FUNCTION VALUES");
+{
+    // functions can hand back a result when we specify a return value.
+    // return values can be stored in a variable
+    function addTwoNumbers(x, y) {
+        console.log(x + y);
+    }
+    let result = addTwoNumbers(4, 5);
+    console.log(result); // retuns undefined because nothing is inserted into the function to store the result
+
+    // lets fix the function
+    function addTwoNumbersAgain(x, y) {
+        return x + y; // notice the RETURN key word
+    }
+    let resultAgain = addTwoNumbersAgain(4, 5);
+    console.log(resultAgain); // prints 9
+
+    // the function can now be used in a loop
+    let resultArray = [];
+
+    for (let i = 0; i < 10; i++) {
+        let result = addTwoNumbersAgain(i, 2*i);
+        resultArray.push(result);
+    }
+
+    console.log(resultArray);
+}
+
+console.log("PRACTICE EXERCISE 6.4");
+{
+    /**
+        Modify the calculator that was made in 6.1 to return added values instead of printing them.
+        Then call the function 10 or more times in a loop, and store the results in an array.
+        When the loop finishes, output the final array into the console
+    **/ 
+    function addTwoNumbers(first, second) { 
+        return Number(first) + Number(second);
+    }
+
+    let calculatedArray = [];
+    for (let i = 0; i < 10; i++) {
+        let val1 = i * 5;
+        let val2 = i * i;
+        let result = addTwoNumbers(val1, val2);
+        calculatedArray.push(result);
+    }
+    console.log(calculatedArray);
+}
