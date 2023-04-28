@@ -252,19 +252,24 @@ console.log("RETURNING FUNCTION VALUES");
 console.log("PRACTICE EXERCISE 6.4");
 {
     /**
-        Modify the calculator that was made in 6.1 to return added values instead of printing them.
+        Modify the calculator that was made in 6.3 to return added values instead of printing them.
         Then call the function 10 or more times in a loop, and store the results in an array.
         When the loop finishes, output the final array into the console
     **/ 
-    function addTwoNumbers(first, second) { 
-        return Number(first) + Number(second);
+
+    function addOrSubtract(num1, num2, operation) {
+        if (operation === "-") {
+            return Number(num1) - Number(num2);
+        } else {
+            return Number(num1) + Number(num2);
+        }
     }
 
     let calculatedArray = [];
     for (let i = 0; i < 10; i++) {
         let val1 = i * 5;
         let val2 = i * i;
-        let result = addTwoNumbers(val1, val2);
+        let result = addOrSubtract(val1, val2, "+");
         calculatedArray.push(result);
     }
     console.log(calculatedArray);
