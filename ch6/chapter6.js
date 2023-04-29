@@ -274,3 +274,187 @@ console.log("PRACTICE EXERCISE 6.4");
     }
     console.log(calculatedArray);
 }
+
+console.log("RETURNING WITH ARROW FUNCTIONS");
+{
+    // with one line arrow functions, we can return without using the keyword RETURN.
+    // lets rewrite one of the functions from above.
+    let addTwoNumbers = (x, y) => x + y;
+    let result = addTwoNumbers (12, 15);
+    console.log(result);
+
+    // multiline arrow functions will need to have the keyword RETURN
+    let addTwoNumbersAgain = (x, y) => {
+        console.log("Adding...");
+        return x + y;
+    }
+    console.log(addTwoNumbersAgain(12, 15));
+}
+
+console.log("VARIABLE SCOPE IN FUNCTIONS");
+{
+    // scope defines where you can access a certain variable
+    console.log("Local variables in functions");
+    
+    // examine the variable x in the below function
+    function testAvailability(x) {
+        console.log("Available here:", x);
+    }
+
+    testAvailability("Hi");
+//  console.log("Not available here", x) // trying to access x here will throw a ReferenceError because it is out of scope.
+
+    // an additional example
+    function testAvailabilityAgain() {
+        let a = "Local Variable";
+        console.log("Available here:", a);
+    }
+    testAvailabilityAgain();
+//  console.log("Not available here:", a) // trying to access a here will throw a ReferenceError because it is out of scope.
+
+    // if you need a value from a variable declared inside a function, use the RETURN keyword
+    function testAvailabilityThird() {
+        let y = "I'll return";
+        console.log("Available here:", y);
+        return y; //notice we are now RETURNing the variable's value
+    }
+
+    let z = testAvailabilityThird();  // the value of y is now assigned to z
+    console.log("Outside the function", z); 
+//  console.log("Still not available here:", y); // trying to access y here will throw a ReferenceError because it is out of scope.
+}
+
+console.log("let versus var variables");
+{
+    // var is function scoped
+    // let is blocked scope
+    // a block is defined by two curly braces { }
+
+    function doingStuff() {
+        if (true) {
+            var x = "local";
+        }
+        console.log(x) // this works because x was declared with var
+    }
+
+    doingStuff();
+
+    // another difference is order of declaration.
+
+    /*
+        // This will error
+        function doingStuffAgain() {
+            if (true) {
+                console.log(x);
+                let x = "local" // variables with let cannot be accessed before being defined, even in the same block
+            }
+        }
+    */
+    // To correct the above with var:
+    function doingStuffThird() {
+        if (true) {
+            console.log(x);
+            var x = "local";
+        }
+    }
+    doingStuffThird(); // returns undefined, rather than a reference error. See "hoisting" in chapter 12.
+}
+
+console.log("const scope");
+{
+    //constants are blocked scope just like let.
+    /*
+    function doingStuff() {
+        if (true) {
+            const X = "local"
+        }
+        console.log(X); // this will throw a reference error
+    }
+    doingStuff();
+    */
+}
+
+console.log("Global Variables");
+{
+    // global variables are declared outside a function and not in some other code block.
+    // variables defined outside of a function are available inside a function.
+    // examine:
+    let globalVar = "Accessible everywhere!";
+    console.log("Outside function:", globalVar);
+
+    function creatingNewScope(x) {
+        console.log("Access to global vars inside function.", globalVar, x);
+    }
+
+    creatingNewScope("some parameters");
+
+    console.log("Still Available:", globalVar);
+
+    // if you create a variable with the same name inside a function,
+    // that variable's value will be used whenever you refer to that variable name within the scope of that particular function
+
+    let x = "global";
+
+    function doingStuff() {
+        let x = "local";
+        console.log(x); // the value of x is "local"
+    }
+    
+    doingStuff();
+    console.log(x); // the value of x is "global"
+
+    // the same is true for parameter names
+
+    let y = "global";
+
+    function doingStuffAgain(y) {
+        console.log(y);
+    }
+
+    doingStuffAgain("parameter");
+    console.log(y);
+
+    // defining variables without a keyword const, let, or var makes them global by default
+    function confuseReader() {
+        z = "Guess my scope..."; // define variable without keyword
+        console.log("Inside the function:", z);
+    }
+    
+    confuseReader();
+    console.log("Outside the function:", z)
+}
+
+console.log("Immediately invoked function expression (IIFE)");
+{
+    // IIFEs are anonymous functions -- without a name -- and is self executing
+    (function () {
+        console.log("IIFE!");
+    })();
+
+    // IIFE with arrow function pattern
+    (()=>{
+        console.log("Right away!");
+    })();
+}
+
+console.log("PRACTICE EXERCISE 6.5");
+{
+    // Use IIFEs to create a few functions and observe how the scope is affected
+    let value = "1000";
+
+    (()=>{
+        let value = "0001";
+        console.log(value);
+    })();
+
+    let result = (()=>{
+        let value = "1100";
+        return value;
+    })();
+
+    console.log(result, value);
+
+    ((value)=>{
+        console.log(`My name is ${value}`);
+    })("Jesse");
+}
