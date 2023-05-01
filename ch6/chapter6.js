@@ -458,3 +458,71 @@ console.log("PRACTICE EXERCISE 6.5");
         console.log(`My name is ${value}`);
     })("Jesse");
 }
+
+console.log("RECURSIVE FUNCTIONS");
+{
+    // calling the same function inside the function.
+    function getRecursive(nr) {
+        console.log(nr)
+        if (nr > 0) {
+            getRecursive(--nr); //the function calls itself after subtracting 1 from the nr variable
+        }
+    }
+    getRecursive(3);
+
+    // execution illustration
+    function logRecursive(nr) {
+        console.log("Started function:", nr);
+        if (nr > 0) {
+            logRecursive(nr - 1);
+        } else {
+            console.log("done with recursion");
+        }
+        console.log("Ended function:", nr);
+    }
+    logRecursive(3);
+}
+
+console.log("PRACTICE EXERCISE 6.6");
+{
+    // calculate the factorial
+    // the factorial of a number is the product of all positive integers bigger than 0 up to the number itself
+    // i.e. the factorial of 7 is 7 * 6 * 5 * 4 * 3 * 2 * 1
+
+    function getFactorial(number) {
+        if (number === 0) {
+            return 1
+        } else {
+            return number * getFactorial(--number);
+        }
+    }
+    console.log(getFactorial(4));
+}
+
+console.log("NESTED FUCNTIONS");
+{
+    function doOutterFunctionStuff(nr) {
+        console.log("Outter function");
+        doInnerFunctionStuff(nr);
+        function doInnerFunctionStuff(x) {
+            console.log(x + 7);
+            console.log("I can access outer variables:", nr);
+        } 
+    }
+    doOutterFunctionStuff(2);
+}
+
+console.log("PRACTICE EXERCISES 6.7");
+{
+    // create a countdown loop starting at a dyamic value of 10
+    let start = 10
+    function countDown(countDownValue) {
+        console.log(countDownValue);
+        if (countDown < 1) {
+            return
+        } else if (countDownValue > 1) {
+            countDown(--countDownValue);
+        }
+    }
+    countDown(start);
+}
