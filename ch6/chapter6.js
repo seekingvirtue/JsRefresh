@@ -18,13 +18,13 @@ console.log(`
         }
 `);
 {
-    // // make a function that asks for your name then greets you
-    // function sayHello() {
-    //     let you = prompt("What's your name? "); // you can have vaiables in functions
-    //     console.log("Hello", you + "!");
-    // }
-    // // call the function
-    // sayHello();
+    // make a function that asks for your name then greets you
+    function sayHello() {
+        let you = prompt("What's your name? "); // you can have vaiables in functions
+        console.log("Hello", you + "!");
+    }
+    // call the function
+    sayHello();
 
     // make a function that logs to console some a phrase
     let varContainingFunction = function() { // notice that variables can have funtions inside them
@@ -49,24 +49,24 @@ console.log("PRACTICE EXERCISE 6.1");
 }
 
 console.log("PRACTICE EXERCISE 6.2");
-// {
-//     // write a program that will randomly describe a name
-//     // make an array of description words
-//     let descriptionsArray = ["old",
-//                             "ugly",
-//                             "young",
-//                             "beautiful",
-//                             "grouchy",
-//                             "helpful"];
-//     // make a function asking for a name
-//     function askNameAndDescribe() {
-//         let name = prompt("What's your name?");
-//         // use a random number to pick a description from the list and print to console.
-//         console.log(name, "is a", descriptionsArray[Math.floor(Math.random() * 6)], "name!"); // wasn't sure this would work, but it did!
-//     }
-//     // invoke the function
-//     askNameAndDescribe();
-// }
+{
+    // write a program that will randomly describe a name
+    // make an array of description words
+    let descriptionsArray = ["old",
+                            "ugly",
+                            "young",
+                            "beautiful",
+                            "grouchy",
+                            "helpful"];
+    // make a function asking for a name
+    function askNameAndDescribe() {
+        let name = prompt("What's your name?");
+        // use a random number to pick a description from the list and print to console.
+        console.log(name, "is a", descriptionsArray[Math.floor(Math.random() * 6)], "name!"); // wasn't sure this would work, but it did!
+    }
+    // invoke the function
+    askNameAndDescribe();
+}
 
 console.log("PARAMETERS AND ARGUMENTS");
 console.log(`
