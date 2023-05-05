@@ -594,3 +594,45 @@ console.log("FUNCTION CALLBACKS");
 
     setInterval(youGotThis, 10000);
 }
+
+console.log("CHAPTER PROJECTS");
+{
+    console.log("Create a recursive function.");
+    // create a recursive function that counts to 10
+   function recursiveFunction(startNumber) {
+        if (startNumber <= 10) {
+            console.log("The count iteration is:", startNumber);
+            recursiveFunction(++startNumber)
+            } else {
+                console.log(startNumber, "is above 10");
+            };        
+    }
+    
+    // invoke with different starting numbers
+    recursiveFunction(4);
+    recursiveFunction(-2);
+    recursiveFunction(22);
+}
+{
+    console.log("Set Timeout Order.");
+    // use arrow function format that outputs "one" and "two".
+    let one = () => {return "one"}
+    let two = () => {return "two"}
+
+    // Create a thrid function that outputs "three" to the console, then invokes the other two
+    function three() {
+        console.log("three");
+        console.log(one());
+        console.log(two());
+    }
+
+    // Create a fourth that outputs "four" to the console.
+    function four() {
+        console.log("four");
+        three();
+        console.log(one());
+    }
+
+    four();
+
+}
