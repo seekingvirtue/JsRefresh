@@ -526,3 +526,71 @@ console.log("PRACTICE EXERCISES 6.7");
     }
     countDown(start);
 }
+
+console.log("ANONYMOUS FUNCTIONS");
+{
+    // we can create functions without names if qe store them in variables
+    // function in regular format
+    function doingStuffAnonymously() {
+        console.log("Not so secret though.");
+    }
+
+    //anonymous function with a variable. notice the function does not have a "name"
+    let functionVariable = function () {
+        console.log("Not so secret though")
+    }
+
+    functionVariable();
+}
+
+console.log("PRACTICE EXERCISE 6.8");
+{
+    //  create a variable and assign it to a function
+    let oneParamFunction = function (paramOne) {
+        console.log(paramOne, ": is your parameter, in the anonymous function");
+    }
+    
+    oneParamFunction("working late");
+
+    // rewrite the same function with notmail function declaration
+
+    function oneParamRegularFunction(diffParam) {
+        console.log(diffParam, ": is your paramter, in the regularly declared function");
+    }
+
+    oneParamRegularFunction("Empty thoughts");
+}
+
+console.log("FUNCTION CALLBACKS");
+{
+    // using functions as parameters
+    // lets reuse the functionVariable code from above:
+    let functionVariable = function () {
+        console.log("Not so secret though")
+    }
+
+    // lets make a new function with the parameter being a function:
+    function doingFlexibleStuff(executeStuff) {
+        executeStuff();
+        console.log("Inside doing flexible stuff function");
+    }
+
+    // and call the new function with our functionVariable as the arguement
+    doingFlexibleStuff(functionVariable);
+
+    // lets make a new anonymous function and call doingFlexibleStuff again
+    let anotherFunctionVariable = function () {
+        console.log("Another anyonymous function implementation");
+    }
+
+    doingFlexibleStuff(anotherFunctionVariable);
+
+    // here's a concept illustrating the uses when asynchronous programing is introduced
+    let youGotThis = function () {
+        console.log("You're doing really well, keep coding!");
+    }
+
+    setTimeout(youGotThis, 1000);
+
+    setInterval(youGotThis, 10000);
+}
