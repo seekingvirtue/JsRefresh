@@ -37,7 +37,7 @@ console.log("CLASSES AND OBJECTS");
 
     // further examples
     function Dog(dogName, weight, color, breed) {
-        this.dogName = dogName;
+        this.dogName = dogName; // the "this" key word defines the associate of the property to THIS class/object
         this.weight = weight;
         this.color = color;
         this.breed = breed;
