@@ -164,3 +164,141 @@ console.log("PRACTICE EXERVICE 7.2");
     let message = person1.fullname() + " and " + person2.fullname();
     console.log("Welcome back", message);
 }
+
+console.log("PROPERTIES");
+{
+    // properties, sometimes also called fields, hold the data of the class.
+    // We have seen one kind of property already, when we created them in the constructors:
+
+    class Person {
+        constructor(firstname, lastname) {
+            this.firstname = firstname; // property
+            this.lastname = lastname; // property
+        }
+    }
+
+    // In the above, the Person class gets two properties from the constructor; firstname and lastname.
+    // Properties can be added and remove (just like with objects)
+    // These can be accessed outside the class, see below
+
+    let p = new Person("Ceact", "Tcaec");
+    console.log("Hi", p.firstname);
+
+    // Often it is not desirable to provide direct access to our properties, in fact we want to do this as much as possible
+    // We want our class to be in control of the values of properties for several reasons
+    // We might want to do validation on a property to assure it has a certain value
+    // We can achieve this by making direct access, outside the class, impossible
+    // To do so, prefix the property with a # symbol
+
+    class PersonRestricted {
+        #firstname;
+        #lastname;
+        constructor(firstname, lastname) {
+            this.#firstname = firstname; // property is no longer accessible outside the class
+            this.#lastname = lastname; // ibid
+        }
+    }
+
+    let pRestricted = new PersonRestricted("Ceact2", "Tcaec2");
+    console.log(pRestricted.firstname); // prints "undefined"
+
+    // Say we wanted to create names with only the letter M
+    class PersonLetterM {
+        #firstname;
+        #lastname;
+        constructor(firstname, lastname) {
+            if(firstname.startsWith("M")) {
+                this.#firstname = firstname;
+            } else {
+                this.#firstname = "M" + firstname;
+            }
+            this.#lastname = lastname;
+        }
+        printName() {
+            return this.#firstname + " " + this.#lastname;
+        }
+    }
+
+    let pLetterM = new PersonLetterM("Norman", "Larrz");
+    console.log(pLetterM.printName());
+}
+
+console.log("GETTERS AND SETTERS");
+{
+    // getters and setters are properties that we can use to GET data from a class and SET the data fields on classes
+    // getters and setters are computed properties (they are more like properties than functions)
+    // getters and setters are called ACCESSORS.
+    // they look like functions, because they have () behind them, but they are not
+    
+    // getters and setters allow access to protected properties so those properties cannot be accessed ouside the object itself
+    // this is a principle called ENCAPSULATION
+    // the class ENCAPSULATES the data, and the object is in control of its own fields
+
+    class Person {
+        #firstname;
+        #lastname;
+        constructor(firstname, lastname) {
+            this.#firstname = firstname;
+            this.#lastname = lastname;
+        }
+        // firstname getter
+        get firstname() {
+            return this.#firstname;
+        }
+        // firstname setter
+        set firstname(firstname) {
+            this.#firstname = firstname;
+        }
+        // lastname getter
+        get lastname() {
+            return this.#lastname;
+        }
+        // lastname setter
+        set lastname(lastname) {
+            this.#lastname = lastname;
+        }
+    }
+
+    // now the getter is called just like any property
+    let p = new Person ("Ceact", "Tcaec");
+    console.log(p.firstname, p.lastname); // no longer returns undefined
+
+    // the setter allows us to now update the p.firstname or p.lastname properties
+    p.firstname = "CHANGED";
+    p.lastname = "CHANGED";
+    console.log(p);
+
+    // we can add additional logic to the setter
+    class PersonWithLogicInSetter {
+        #firstname;
+        #lastname;
+        constructor(firstname, lastname) {
+            this.#firstname = firstname;
+            this.#lastname = lastname;
+        }
+        
+        get firstname() {
+            return this.#firstname;
+        }
+
+        set firstname(firstname) {
+            if(firstname.startsWith("M")) {
+                this.#firstname = firstname;
+            } else {
+                this.#firstname = "M" + firstname;
+            }
+        }
+
+        get lastname() {
+            return this.#lastname;
+        }
+
+        set lastname(lastname) {
+            this.#lastname = lastname;
+        }
+    }
+
+    let pWithLogicInSetter = new PersonWithLogicInSetter(" ", "Tcaec");
+    pWithLogicInSetter.firstname = "Ceact";
+    console.log(pWithLogicInSetter.firstname, pWithLogicInSetter.lastname);
+}
