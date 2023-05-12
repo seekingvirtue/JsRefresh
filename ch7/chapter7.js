@@ -302,3 +302,125 @@ console.log("GETTERS AND SETTERS");
     pWithLogicInSetter.firstname = "Ceact";
     console.log(pWithLogicInSetter.firstname, pWithLogicInSetter.lastname);
 }
+
+console.log("INHERITANCE");
+{
+    // inheritance is a key concept in OOP
+    // it is the concept that classes can have child classes
+    // child classes inherit properties and method from parent classess
+    // examine the below
+    
+    class Vehicle {
+        constructor(color, currentSpeed, maxSpeed) {
+            this.color = color;
+            this.currentSpeed = currentSpeed;
+            this.maxSpeed = maxSpeed;
+        }
+
+        move() {
+            console.log("moving at", this.currentSpeed);
+        }
+
+        accelerate(amount) {
+            this.currentSpeed += amount;
+        }
+    }
+    
+    // now lets make a motorcycle class that inherits from Vehicle
+    // we will use the extends keyword, and specify the parent classa after
+    // the super keyword is calling the constructor from the parrent
+    // calling the parent constructor ensures the parent fields are set
+    // calling super() is not optional when inheriting
+
+    class Motorcycle extends Vehicle {
+        constructor(color, currentSpeed, maxSpeed, fuel) {
+            super(color, currentSpeed, maxSpeed); 
+            this.fuel = fuel;
+        }
+        
+        doWheelie() {
+            console.log("driving on one wheel");
+        }
+    }
+
+    // because we have access to the properties in Vehicle, the below will work
+
+    let motor = new Motorcycle("Black", 0, 250, "gaspline");
+    console.log(motor.color);
+    motor.accelerate(50);
+    motor.move();
+
+    // lets rewrite the Vehicle class and Motorcycle class to be protected
+
+    class VehicleProtected {
+        #color;
+        #currentSpeed;
+        #maxSpeed;
+        constructor(color, currentSpeed, maxSpeed) {
+            this.#color = color;
+            this.#currentSpeed = currentSpeed;
+            this.#maxSpeed = maxSpeed;
+        }
+
+        get color() {
+            return this.#color;
+        }
+
+        set color(color) {
+            this.#color = color;
+        }
+
+        get currentSpeed() {
+            return this.#currentSpeed;
+        }
+
+        set currentSpeed(currentSpeed) {
+            this.#currentSpeed = currentSpeed;
+        }
+
+        get maxSpeed() {
+            return this.#maxSpeed;
+        }
+
+        set maxSpeed(maxSpeed) {
+            this.#maxSpeed = maxSpeed;
+        }
+        
+        move() {
+            console.log("moving at", this.#currentSpeed);
+        }
+
+        accelerate(amount) {
+            this.#currentSpeed += amount;
+        }                
+    }
+
+    class MotorcycleProtected extends VehicleProtected {
+        #fuel;
+        constructor(color, currentSpeed, maxSpeed, fuel) {
+            super(color, currentSpeed, maxSpeed);
+            this.#fuel = fuel;
+        }
+
+        get fuel() {
+            return this.#fuel;
+        }
+
+        set fuel(fuel) {
+            this.#fuel = fuel
+        }
+
+        doWheelie() {
+            console.log("driving on one wheel");
+        }                
+    }
+
+    let motorProtected = new Motorcycle("Green", 0, 120, 10);
+    console.log(motorProtected.color);
+    console.log(motor.currentSpeed);
+    motorProtected.accelerate(40);
+    motorProtected.doWheelie()
+    motorProtected.move();
+    console.log(motorProtected.fuel);
+    console.log(motor.maxSpeed);
+}
