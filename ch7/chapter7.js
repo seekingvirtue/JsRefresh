@@ -414,13 +414,67 @@ console.log("INHERITANCE");
             console.log("driving on one wheel");
         }                
     }
+    
+    // the following will work and now all propertied are protected!
 
     let motorProtected = new Motorcycle("Green", 0, 120, 10);
+
     console.log(motorProtected.color);
     console.log(motor.currentSpeed);
+
     motorProtected.accelerate(40);
     motorProtected.doWheelie()
     motorProtected.move();
+
     console.log(motorProtected.fuel);
     console.log(motor.maxSpeed);
+}
+
+console.log("PROTOTYPES");
+{
+    // a prototype is the mechanism in JavaScript that makes it possible to have objects
+    // when nothing is specified when creating a class, the objects inherit from the Object.prototype prototype
+    // Object.prototype is a complex built-in JavaScript class we can use
+    // consider it the base object that is always on top of the inheritance tree and therefore always present in our objects
+    // you can access it as follows
+    
+    /*
+        ClassName.prototype
+    */
+
+        class Person{
+            constructor(firstname, lastname) {
+                this.firstname = firstname;
+                this.lastname = lastname;
+            }
+    
+            greet() {
+                console.log("Hi there!");
+            }
+        }
+
+    // lets add a function to a class using the prototype property
+    
+    Person.prototype.introduce = function () {
+        console.log("Hi, I'm", this.firstname);
+    }
+
+    // remember, prototype is aproperty holding ALL the properties and methods of an object
+    // we can also add properties, just like above
+
+    Person.prototype.favoriteColor = "green";
+
+    // now lets make a new instance of person and try it out
+
+    let p = new Person("Ceact", "Tcaec");
+    console.log(p.favoriteColor);
+    p.introduce();
+    console.log(p);
+
+    // remember, methods and properties defined via the prototype are really as if they were defined in the class
+    // this means overwriting them for a certain instance DOESN'T overwrite them for all instances
+    
+    let p2 = new Person("Magiliw", "Balagtas");
+    p2.favoriteColor = "orange";
+    console.log("Ceact likes", p.favoriteColor, "and Magiliw likes", p2.favoriteColor);
 }
