@@ -478,3 +478,105 @@ console.log("PROTOTYPES");
     p2.favoriteColor = "orange";
     console.log("Ceact likes", p.favoriteColor, "and Magiliw likes", p2.favoriteColor);
 }
+
+console.log("PRACTICE EXERCISE 7.3");
+{
+    // create a class that contains properties for different animal species
+    // include sounds that each animal species makes
+    // create two or more
+
+    class Animal {
+        #name
+        #mammal
+        #carnivorous 
+        #color
+        #size
+        #sound
+        constructor(name, mammal, carnivorous, color, size, sound) {
+            this.#name = name;
+            this.#mammal = mammal;
+            this.#carnivorous = carnivorous;
+            this.#color = color;
+            this.#size = size;
+            this.#sound = sound;
+        }
+
+        get name() {
+            return this.#name
+        }
+
+        set name(name) {
+            this.#name = name;
+        }
+
+        get mammal() {
+            return this.#mammal;
+        }
+
+        set mammal(mammal) {
+            if (mammal === true || mammal === false) {
+                this.#mammal = mammal;
+            } else {
+                this.#mammal = "unknown";
+            }
+        }
+
+        get carnivorous() {
+            return this.#carnivorous;
+        }
+
+        set carnivorous(carnivorous) {
+            if (carnivorous === true || cornivorous === false) {
+                this.#mammal = mammal;
+            } else {
+                this.#mammal = "unknown";
+            }
+        }
+
+        get color() {
+            return this.#color;
+        }
+
+        set color(color) {
+            this.#color = color
+        }
+
+        get size() {
+            return this.#size;
+        }
+
+        set size(size) {
+            this.#size = size;
+        }
+
+        get sound() {
+            return this.#sound;
+        }
+
+        set sound(sound) {
+            this.#sound = sound;
+        }
+        
+        // create a method that prints a given animal and it's sound
+        zooInfo() {
+            console.log(`${this.#name}'s carinvore status is ${this.#carnivorous}, it is ${this.#size} big and makes a ${this.#sound} sound.`);
+        }
+    }
+    
+    // make a three instances of the animal object
+    let rabbit = new Animal("rabbit", true, false, "brown", "small", "silent");
+    let elephant = new Animal("elephant", true, false, "grey", "huge", "paaawhooo");
+    let shark = new Animal("shark", false, true, "blue", "large", "chop");
+    
+    // add a prototye with another action for the animal
+
+    Animal.prototype.specialAttack = function () {
+        console.log(`${this.name} uses it's ${this.size} size and attacks bad guys!`);
+    }
+
+    // test the animals
+    shark.specialAttack();
+    console.log(elephant.mammal);
+    elephant.zooInfo();
+    console.log(rabbit.sound, "bunny sounds");
+}
