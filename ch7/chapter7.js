@@ -580,3 +580,68 @@ console.log("PRACTICE EXERCISE 7.3");
     elephant.zooInfo();
     console.log(rabbit.sound, "bunny sounds");
 }
+
+console.log("CHAPTER PROJECTS");
+{
+    console.log("Employee tracking app");
+    
+    // create a class to track the employees of a company
+    // use firstname, lastname, and the number of years worked as values in the constructor
+    class Employees {
+        #firstname
+        #lastname
+        #yearsWorkingHere
+        constructor(firstname, lastname, yearsWorkingHere) {
+            this.#firstname = firstname;
+            this.#lastname = lastname;
+            this.#yearsWorkingHere = yearsWorkingHere;
+        }
+
+        get firstname() {
+            return this.#firstname;
+        }
+
+        set firstname(firstname) {
+            this.#firstname = firstname;
+        }
+
+        get lastname() {
+            return this.#lastname;
+        }
+
+        set lastname(lastname) {
+            this.#lastname = lastname;
+        }
+
+        get yearsWorkingHere() {
+            return this.#yearsWorkingHere;
+        }
+
+        set yearsWorkingHere(yearsWorkingHere) {
+            this.#yearsWorkingHere = yearsWorkingHere;
+        }
+    }
+    
+    // create two or more people with values in all properties
+    let e1 = new Employees("Ceact", "Tcaec", 22);
+    let e2 = new Employees("Magiliw", "Balagtas", 1);
+
+    // add the people to an array
+    let employeeArray = [];
+    employeeArray.push(e1, e2);
+
+    console.log(employeeArray);
+
+    // set up a prototype to return the details of the person's first and last name and the number of years working.
+    Employees.prototype.employeeInfo = function () {
+        console.log(`${this.firstname} ${this.lastname} has worked worked here for ${this.yearsWorkingHere} years.`);
+    }
+
+    // Iterate through the contents of the array to output the results to the console.
+    for (e in employeeArray) {
+        employeeArray[e].employeeInfo();
+    }
+}
+{
+    console.log("Menu items calculator");
+}
