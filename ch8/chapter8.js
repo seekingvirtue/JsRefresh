@@ -9,3 +9,5 @@
     - Array Methods
     - Number methods
 */
+
+console.log("BEGIN BUILT-IN JAVASCRIPT METHODS")

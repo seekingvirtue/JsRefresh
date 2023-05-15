@@ -644,4 +644,59 @@ console.log("CHAPTER PROJECTS");
 }
 {
     console.log("Menu items calculator");
+    // create a class which will allow you to work out the combined price of a number of items
+    // interact with it to work out the total cost of different orders
+    
+    class MenuItems{
+        #price
+        #howMany
+        constructor(price, howMany){
+            this.#price = price;
+            this.#howMany = howMany;
+        }
+        get price() {
+            return this.#price;
+        }
+        set price(price) {
+            this.#price = price;
+        }
+        get howMany() {
+            return this.#howMany;
+        }
+        set howMany(howMany) {
+            this.#howMany = howMany
+        }
+        calulateTotal() {
+            return this.#price * this.#howMany;
+        }
+    }
+
+    let drinks = new MenuItems(4.50, 2);
+    let burgers = new MenuItems(6, 4);
+    let iceCream = new MenuItems(1.50, 1);
+
+    let totalCost = (drinks.calulateTotal() + burgers.calulateTotal() + iceCream.calulateTotal());
+    console.log(`Your total is $${totalCost}.`);
+
+    // ok well I missunderstood what to do, here is the answer from the back of the book
+    class Menu {
+        #offer1 = 10;
+        #offer2 = 20;
+        constructor(val1, val2) {
+            this.val1 = val1;
+            this.val2 = val2;
+        }
+        calcTotal() {
+            return (this.val1 * this.#offer1) + (this.val2 * this.#offer2)
+        }
+        get total() {
+            return this.calcTotal();
+        }
+    }
+    const val1 = new Menu(2,0);
+    const val2 = new Menu(1,3);
+    const val3 = new Menu(3,2);
+    console.log(val1.total);
+    console.log(val2.total);
+    console.log(val3.total);
 }
