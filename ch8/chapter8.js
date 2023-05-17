@@ -94,3 +94,57 @@ console.log("PRACTICE EXERCISE 8.1");
     let webAddress = "http://www.basescripts.com?=Hello World";
     console.log(encodeURIComponent(webAddress));
 }
+
+console.log("Parsing Numbers");
+{
+    console.log("let's make integers with parseInt()");
+    
+    // with parseInt(), strings can become numbers
+    // this method is part of the Number class, but it is global
+    let str_int = "6";
+    let int_int = parseInt(str_int);
+    console.log("Type of", int_int, "is", typeof int_int);
+    
+    // what about trying different types of numbers?
+    let str_float = "7.6";
+    let int_float = parseInt(str_float);
+    console.log("Type of", int_float, "is", typeof int_float);
+
+    let str_binary = "0b101";
+    let int_binary = parseInt(str_binary);
+    console.log("Type of", int_binary, "is", typeof int_binary);
+
+    // in the above the parseInt() stops parsing when it runs into a non-numeric character
+    // this is the intended behavior, and is working like it should (remember that)
+    // what about if the string is really not a number
+
+    let str_nan = "hello!";
+    let int_nan = parseInt(str_nan);
+    console.log("Type of", int_nan, "is", typeof int_nan);
+
+    console.log("Lets make floats with parseFloat()");
+
+    // with parseFloat(), it works exactly the same as parseInt() except it can understand and handle decimals
+    let int_float2 = parseFloat(str_float);
+    console.log("Type of", int_float2, "is", typeof int_float2); // notice now that 7.6 is returned
+    
+    // what if there are more than one decimals?
+    let str_version_nr = "2.3.4";
+    let float_version_nr = parseFloat(str_version_nr);
+    console.log("Type of", float_version_nr, "is", typeof float_version_nr); // logs 2.3
+
+    // the strategy of the parseFloat() method is like parseInt().
+    // as soon as parseFloat() encounters a character it cannot interpret (the second . above) it will stop parsing
+    // note: parseFloat() will not append .0 to integers
+    let float_int = parseFloat(str_int);
+    console.log("Type of", float_int, "is", typeof float_int); // logs 6, not 6.0
+    
+    // parseFloat() on binary numbers and NaNs acts the same as parseInt()
+    let float_binary = parseFloat(str_binary)
+    console.log("Type of", float_binary, "is", float_binary); // logs 0, not 0b101
+
+    let float_nan = parseFloat(str_nan);
+    console.log("Type of", float_nan, "is", typeof float_nan); // logs NaN
+
+
+}
