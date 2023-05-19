@@ -145,6 +145,50 @@ console.log("Parsing Numbers");
 
     let float_nan = parseFloat(str_nan);
     console.log("Type of", float_nan, "is", typeof float_nan); // logs NaN
+}
 
+console.log("Executing JavaScript with eval()");
+{
+    // this is a global method that executes the argument
+    // this means it will do whatever is inserted into it
+    // the book says better to not use this at all due to security risks
+}
+
+console.log("Array Methods");
+{
+    // we have seen some already such as shift() and push()
+    
+    console.log("Performing a certain action for every item");
+    
+    // you might be thinking of a loop, but the forEach() method is built in for iterating
+    
+    let arr = ["grapefruit", 4, "hello", 5.6, true];
+    
+    function printStuff(element, index) {
+        console.log("Printing stuff", element, "on array positions", index);
+    }
+
+    arr.forEach(printStuff);
+}
+
+console.log("Filtering an array");
+{
+    let arr = ["squirrel", 5, "Tjed", new Date(), true];
+
+    // make a function that take the element and index, and checks the typeof
+    function checkString(element, index) {
+        return typeof element === "string";
+    }
+
+    // run the array through the filter function and log the results.
+    let filterArr = arr.filter(checkString);
+    console.log(filterArr);
+
+    console.log("Checking a conditions for all elements");
+    // you can use every() to see whether something is true for all elements in the array
+    console.log(arr.every(checkString)); // returns false because not every element is a string
+
+    
 
 }
+
