@@ -175,7 +175,7 @@ console.log("Filtering an array");
 {
     let arr = ["squirrel", 5, "Tjed", new Date(), true];
 
-    // make a function that take the element and index, and checks the typeof
+    // make a function that takes the element and index, and checks the typeof
     function checkString(element, index) {
         return typeof element === "string";
     }
@@ -188,7 +188,64 @@ console.log("Filtering an array");
     // you can use every() to see whether something is true for all elements in the array
     console.log(arr.every(checkString)); // returns false because not every element is a string
 
+    console.log("Replaceing part of an array with another part of the array");
     
+    // lets examine the copyWithin() method that is part of the array class
+    // it can replace a part of the array with another part of the array
+    // in the first example below we will specify three arguements
+    // the first is the target position, to which the values get copied
+    // the second is the start of what to copy to the target position
+    // the third is the end of the sequence that willbe copied to the target position (not including the index)
+    let array = ["grapefruit", 4, "hello", 5.6, true];
+    array.copyWithin(0, 3, 4);
+    console.log(array); // array becomes [5.6, 4, 'hello', 5.6, true]
+    
+    // if we extend the range
+    array.copyWithin(0, 3, 5); // notice the index 5 is beyond the final index of 4
+    console.log(array); // array becomes [5.6, true, 'hello', 5.6, true]
 
+    // leaving out the final argument will copy the value through to the end of the array
+    let arrayAgain = ["grapefruit", 4, "hello", 5.6, true, false];
+    arrayAgain.copyWithin(0,3);
+    console.log(arrayAgain); // [5.6, true, false, 5.6, true, false]
 }
 
+console.log("Mapping the values of an array.");
+{
+    // some times you need to change all the values in an array
+    // array.map() will do exactly that, this method will return a new array with all the new values
+    let arr= [1, 2, 3, 4];
+    let mapped_arr = arr.map(x => x + 1); // with map(), you have to specify how to create those new values. In this case we used an arrow function
+    console.log(mapped_arr); // this logs [2, 3, 4, 5]
+}
+
+console.log("Finding the last occurrence in an array.");
+{
+    // we can find occurances with indexOf(), to find the last occurrence we use lastIndexOf()
+    let bb = ["so", "bye", "bye", "love"];
+    console.log(bb.lastIndexOf("bye")); // returns 2 because that is the last occurrence of "bye"
+    console.log(bb.lastIndexOf("hi")); // returns -1 because there is no occurrence of "hi"
+}
+
+console.log("PRACTICE EXERCISE 8.2");
+{
+    //Remove duplicates from the array using filter() and indexOf()
+    let arrayWithDupes = [
+        "Laurence",
+        "Mike",
+        "Larry",
+        "Kim",
+        "Joanne",
+        "Laurence",
+        "Mike",
+        "Laurence",
+        "Mike",
+        "Laurence",
+        "Mike"
+    ];
+
+    // make a call back function to pass into the filter() method
+    function result() {
+
+    } 
+}
