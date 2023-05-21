@@ -259,6 +259,12 @@ console.log("PRACTICE EXERCISE 8.3");
     
     // using map() return an updated array, multiplying all the numbers in the array by 2
     
+    function multiplyBy2(number) {
+        return number * 2;
+    }
+    let arrayMultipliedWithFunction = arrayOfNumbers.map(multiplyBy2);
+    console.log(arrayMultipliedWithFunction);
+    
     let arrayMultiplied = arrayOfNumbers.map(e => e * 2); // I could not figure out how to do this without arrow function
     console.log(arrayMultiplied);
 }
