@@ -244,8 +244,21 @@ console.log("PRACTICE EXERCISE 8.2");
         "Mike"
     ];
 
-    // make a call back function to pass into the filter() method
-    function result() {
+    // I copied this from the back of the book because I did not really understand what to do
+    const arr2 = arrayWithDupes.filter((value, index, array) => {
+        console.log(value, index, array.indexOf(value));
+        return arrayWithDupes.indexOf(value) === index;
+    });
+    console.log(arr2);
+}
 
-    } 
+console.log("PRACTICE EXERCISE 8.3");
+{
+    // using the array.map() method, update an array's contents
+    let arrayOfNumbers = [1, 2, 3, 4, 5, 6, 7];
+    
+    // using map() return an updated array, multiplying all the numbers in the array by 2
+    
+    let arrayMultiplied = arrayOfNumbers.map(e => e * 2); // I could not figure out how to do this without arrow function
+    console.log(arrayMultiplied);
 }
