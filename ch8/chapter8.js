@@ -268,3 +268,75 @@ console.log("PRACTICE EXERCISE 8.3");
     let arrayMultiplied = arrayOfNumbers.map(e => e * 2); // I could not figure out how to do this without arrow function
     console.log(arrayMultiplied);
 }
+
+console.log("String methods");
+{
+    console.log('combining strings')
+    
+    // usage of concat() will not change the original strings, it returns the combined result as a string
+    // you have to capture the result in a new variable or it will get lost
+    let s1 = "Hello ";
+    let s2 = "Javascript";
+    let result = s1.concat(s2);
+    console.log(result);
+
+    console.log("Converting a string to an array.");
+    
+    // usage of the split() method we can convert a string to an array.
+    // again we will have to capture the result, or lose it, as split() will not change the original string
+    let array_result = result.split(" "); // the arguement is saying "every time you encounter that string, create a new array item/element"
+    console.log(array_result); // logs ["Hello", "Javascript"]
+
+    // we can split() by any character
+    let favoriteFruits = "strawberry,watermelon,grapfruit";
+    let array_fruit = favoriteFruits.split(",");
+    console.log(array_fruit); // logs ['strawberry', 'watermelon', 'grapfruit']
+
+    console.log("converting an array into a string");
+    
+    // with join(), we can convert an array into a string
+    let letters = ["a","b","c"];
+    let stringFromArray = letters.join();
+    console.log(stringFromArray); // logs "a,b,c"
+    // if you want something other than a comma, you can specify it as an arguement to join()
+    let stringFromArrayWithHyphen = letters.join("-");
+    console.log(stringFromArrayWithHyphen); // logs "a-b-c"
+}
+
+console.log("Working with index and positions");
+{
+    // being able to find what index a certain substring is at within your string is very useful
+    // when you need to search for a certain word through the user input of a log file and create substring starting at that index.
+    // just like arrays, strings will use the indexOf() method
+    // indexOf() will return the index, a single number, of the first character of the substring
+
+    let poem = "Roses are red, violets are blue, if I can do JS, then you can too!";
+    let index_re = poem.indexOf("re");
+    console.log(index_re); // return 7 because the first occurance of "re" is in "are", and it begins at index 7
+    
+    // when it cannot find the index, -1 is reurned
+    let indexNotFound = poem.indexOf("python");
+    console.log(indexNotFound); // returns -1 because "python" is not in the poem
+    
+    /*
+        often you will write an if check to see wherether it's -1 before dealing with the result
+        i.e.
+
+        if(poem.indexOf("python") != -1){
+            // do stuff
+        }
+    */
+
+    // an alternate way of searching for a particular substring within a string is to use the search() method
+    let searchStr = "When I see my fellow, I say hello";
+    let position = searchStr.search("lo");
+    console.log(position); // logs 17 because that is the index of "lo" in "fellow".
+
+    // much like indexOf(), search() will return -1 if nothing is found
+    let notFound = searchStr.search("JavaScript");
+    console.log(notFound); // returns -1 because "JavaScript" is not in the original string
+
+    // note search() will accept a regex format as an input, where indexOf() only takes a string.
+
+    // 
+}
