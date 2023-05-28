@@ -338,5 +338,145 @@ console.log("Working with index and positions");
 
     // note search() will accept a regex format as an input, where indexOf() only takes a string.
 
-    // 
+    // moving on from indexOf() (which returns the first) occurence, lastIndexOf() returns where the arguement occurs last
+    let lastIndex_re = poem.lastIndexOf("re");
+    console.log(lastIndex_re); // returns 24, because that is the last occurence of "re"
+
+    // sometime you will have to do the reverse
+    // instead of looking for what index a string occurs at, you will want to know what character is at a certian index
+    // examine charAt(), where the specified index position is taken as an arguement
+
+    let pos1 = poem.charAt(10);
+    console.log(pos1) // log "r" because that is the character at index 10
+
+    // If you are asking for the position of an index that is out of range, chatAt() returns an empty string
+    let pos2 = poem.charAt(1000);
+    console.log(pos2);
+}
+
+console.log("Creating substrings");
+{
+    // with slice(start, end) we can create substrings. This will not alter the original string, but return a new string with the substring
+    // if you leave out the second parameter, it will just continue to the end of the string from the defined start parameter
+    // the end index is not included in the returned substring, if you want it, you add 1 to the number.
+    let str = "Create a substring";
+    let substr1 = str.slice(5);
+    let substr2 = str.slice(0,3);
+    console.log("1:", substr1); 
+    console.log("2:", substr2);
+}
+
+console.log("Replacing parts of the string");
+{
+    // if you need to replace a part of the string, you can use replace(old, new);
+    // it takes two arguements, one to defining what to look for, second is the value to replace it with.
+    let hi = "Hi buddy";
+    let new_hi = hi.replace("buddy", "Ceact");
+    console.log(hi, new_hi);
+
+    // if the string you are targeting does not appear, the replacement doesn't happen and the original string is returned
+    let new_hi2 = hi.replace("not there", "Pascal");
+    console.log(new_hi2); // returns "Hi buddy"
+
+    // a point to note, replace(old, new) will only replace the first occurence
+    let s3 = "hello hello";
+    let new_s3 = s3.replace("hello", "oh");
+    console.log(new_s3); // logs "oh hello"
+
+    // to replace all, we use replaceAll(old, new)
+    let new_s3_2 = s3.replaceAll("hello", "oh");
+    console.log(new_s3_2); // logs "oh oh"
+}
+
+console.log("Uppercase and lowercase");
+{
+    // we can change the letters of a string with toUpperCase() and toLowerCase() on strings
+    // this does not change the original string either, so we need to capture it or lose it
+    let low_bye = "bye!";
+    let up_bye = low_bye.toUpperCase();
+    console.log(up_bye);
+
+    let caps = "HI HOW ARE YOU?";
+    let fix_caps = caps.toLowerCase();
+    console.log(fix_caps);
+
+    // what if you do want the first letter of the sentence to be capitalized?
+    let first_capital = fix_caps.charAt(0).toUpperCase().concat(fix_caps.slice(1));
+    console.log(first_capital);
+}
+
+console.log("The start and end of a strng");
+{
+    // sometimes you want to check what a string starts with and ends with?
+    // examine startsWith();
+
+    let encouragement = "You are doing great, keep up the good work!";
+    let bool_start = encouragement.startsWith("You");
+    console.log(bool_start); // logs true
+    // be careful, because startsWith() is case sensitive
+    let bool_start2 = encouragement.startsWith("you");
+    console.log(bool_start2); // logs false
+
+    // if you don't care about uppercase or lowercase, you can use toLowerCase, or toUpperCase
+    let bool_start3 = encouragement.toLocaleLowerCase().startsWith("you");
+    console.log(bool_start3); // logs true now
+
+    // We can do the same thing for checking whether a string ends with a certain string.
+    let bool_end = encouragement.endsWith("something else");
+    console.log(bool_end); // logs false
+    
+    let bool_end2 = encouragement.endsWith("!");
+    console.log(bool_end2); // logs true
+}
+
+console.log("PRACTICE EXERCISE 8.4");
+{
+    // using string manipultion, create a function that will return a string with the first letter of all the words capitalized and the rest of the letters lowercase
+    // use the following sentence to transform 
+    let sentence = "thIs will be capiTalized for each word";
+    console.log(sentence);
+
+    function transform(string) {
+        stringLowered = string.toLowerCase();
+        // console.log(stringLowered);     
+
+        let arrWordsCorrect = [];
+
+        words = stringLowered.split(" ");
+        // console.log(words);
+
+        words.forEach(word => {
+            let pushValue = word.slice(0,1).toUpperCase().concat(word.slice(1));
+            //console.log(pushValue);
+            arrWordsCorrect.push(pushValue)
+        });
+        // console.log(arrWordsCorrect);
+
+        let joinCorrectedWords = arrWordsCorrect.join(" ");
+        // console.log(joinCorrectedWords);
+
+        return joinCorrectedWords;
+    }
+    
+    let check = transform(sentence);
+    console.log("transformed sentence:", check);
+}
+
+console.log("PRACTICE EXERCISE 8.5");
+{
+    // using replaceAll(), complete this vowel replacer exercise by replacing the vowels in a string with numbers
+    let startingString = "I love JavaScript"
+    
+    let lowerCaseString = startingString.toLowerCase();
+    let vowelArray = ["a", "e", "i", "o", "u"];
+    
+    for (e of vowelArray) {
+       // console.log(e);
+       let newCodeStrings = lowerCaseString.replaceAll("a", vowelArray.indexOf("a"))
+       .replaceAll("e", vowelArray.indexOf("e"))
+       .replaceAll("i", vowelArray.indexOf("i"))
+       .replaceAll("o", vowelArray.indexOf("o"))
+       .replaceAll("u", vowelArray.includes("u"));
+       console.log(newCodeStrings);
+    }
 }
