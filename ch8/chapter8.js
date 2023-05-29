@@ -480,3 +480,199 @@ console.log("PRACTICE EXERCISE 8.5");
        console.log(newCodeStrings);
     }
 }
+
+console.log("NUMBER METHODS");
+{
+    console.log("Checking if something is (not) a number");
+    // this can be done with isNaN()
+    // this is a global method which can be used without Number in front of it
+    // often you will want to do the opositing, which can be done with the negation operator !
+
+    let x = 34;
+    console.log(isNaN(x)); // returns false
+    console.log(!isNaN(x)); // returns true
+    let str = "hi";
+    console.log(isNaN(str)); // returns true
+    console.log(!isNaN(str)); // returns false
+
+    // here is that funky javascript everyone talks about
+    let str2 = "5"
+    console.log("\"5\"",isNaN(str2)); // returns false
+    console.log("\"5\"",!isNaN(str2)); // returns true
+}
+
+console.log("Checking if something is finite.");
+{
+    // this is another global method, isFinite()
+    // it returns false for NaN, Infinity, and undefined; true for all other values
+    let x = 3;
+    let str = "finite";
+    console.log(isFinite(x)); // returns true
+    console.log(isFinite(str)); // returns false
+    console.log(isFinite(Infinity)); // returns false
+    console.log(isFinite(10 / 0)); // returns false
+}
+
+console.log("Checking if something is an integer.");
+{
+    // this is done with isInteger(), however this is not a global method, therefore we will have to refer to the Number object to use it
+    // it will return true if a value is an integer, and false if it is not
+    let x = 3;
+    let str = "integer";
+    console.log(Number.isInteger(x)); // returns true
+    console.log(Number.isInteger(str)); // returns false
+    console.log(Number.isInteger(Infinity)); // returns false
+    console.log(Number.isInteger(2.4)) // returns false (2.4 is a float remember);
+}
+
+console.log("Specifying a number of decimals.");
+{
+    // we can tell JavaScript how many decimals to use with the toFixed() method
+    // this is different from the rounding method in Math, since we can specify the number of decimals here
+    // it doesn't change the original value, so we'll have to store the result
+    let x = 1.23456;
+    let newX = x.toFixed(2)
+    console.log(newX); // returns 1.23
+
+    // toFixed() will round the number normally
+    let newX2 = x.toFixed(3);
+    console.log(newX2); // returns 1.235 because the final number is rounded off
+}
+
+console.log("Specifying precision");
+{
+    // there is a method to specify percision.
+    // this is different from rounding methods in Math, since we can specify the total number of numbers to look at
+    // this comes down to JavaScript looking at the total number of numbers
+    // it also counts the numbers before the "."
+
+    let x = 1.23456;
+    let newX = x.toPrecision(2);
+    console.log(newX); // returns 1.2
+
+    // this will also will round normally
+    let newX2 = x.toPrecision(4);
+    console.log(newX2); // returns 1.235
+}
+
+console.log("MATH METHODS");
+// the Math object has many methods that we can use to do calculations and operations on numbers
+console.log("Finding the highest and lowest numbers.");
+{
+    // there is a built in method max() to find the highest number among the arguements
+    let highest = Math.max(2, 56, 12, 1, 233, 4);
+    console.log(highest); // returns 233
+
+    // similarly we can find the lowest number with min()
+    let lowest = Math.min(2, 56, 12, 1, 233, 4);
+    console.log(lowest); // returns 1
+
+    // if you try to use max() or min() with non-numeric arguements, you will get NaN
+    let highestOfWords = Math.max("hi", 3, "bye");
+    console.log(highestOfWords); // returns NaN
+
+    let lowestOfWords = Math.min("hi", 3, "bye");
+    console.log(lowestOfWords); // returns NaN also
+}
+
+console.log("Square root and raising to the power of.");
+{
+    // the method sqrt() is used to calculate the square root of a certain number.
+    let result = Math.sqrt(64);
+    console.log(result); // returns 8
+
+    // in order to raise a number to a certain power (3^2), we use pow(base, exponent)
+    let result2 = Math.pow(5, 3);
+    console.log(result2); // returns 125, because 5*5*5 = 125
+}
+
+console.log("Turning decimals into integers.");
+{
+    // there are different ways to turn decimals into integers
+    // sometimes you will want to round the number, which we can do with Math.round()
+    let x = 6.78;
+    let y = 5.34;
+
+    console.log("When using Math.round()");
+    console.log("X:", x, "becomes", Math.round(x)); // returns 7
+    console.log("Y:", y, "becomes", Math.round(y)); // returns 5
+
+    // what if you always want to round up? 
+    // for example, if you need to calculate how many wood boards you need and conclude you need 1.1, 1 is not going to be enough to do the job
+    // in this case, we use the Math.ceil() method (refering to ceiling);
+    let negativeX = -x;
+    let negativeY = -y;
+
+    console.log("When using Math.ceil()");
+    console.log("negativeX", negativeX, "becomes", Math.ceil(negativeX)); // returns -6
+    console.log("negativeY", negativeY, "becomes", Math.ceil(negativeY)); // returns -5
+
+    // the Math.floor() method does the exact opposite of the Math.ceil() method
+    console.log("When using Math.floor()");
+    console.log("X:", x, "becomes", Math.floor(x)); // returns 6
+    console.log("Y:", y, "becomes", Math.floor(y)); // returns 5
+
+    // becareful with negative numbers here, because it feels counterintuitive
+    console.log("negativeX", negativeX, "becomes", Math.floor(negativeX)); // returns -7
+    console.log("negativeY", negativeY, "becomes", Math.floor(negativeY)); // returns -6
+
+    // the last method we will explore to make decimals into integers is Math.trunc();
+    // this gives the same result as Math.floor(), but gets the results differently.
+    // Math.trunc() is not doing any rounding, but rather only returning the integer part
+    console.log("When using Math.trunc()");
+    console.log("X:", x, "becomes", Math.trunc(x)); // returns 6
+    console.log("Y:", y, "becomes", Math.trunc(y)); // returns 5
+
+    // again, watch out for negative numbers
+    console.log("negativeX", negativeX, "becomes", Math.trunc(negativeX)); // returns -6
+    console.log("negativeY", negativeY, "becomes", Math.trunc(negativeY)); // returns -5
+}
+
+console.log("Exponent and logarithm.");
+{
+    // the exponent is the number to which a base is being raised.
+    // we use e (Euler's number) a lot in mathematics, this is what the Math.exp() method in JavaScript does.
+    // it returns the number to which e must be raised to get the input.
+    // we can use the Math.exp() built-in method of Math to calculate the exponent, and the Math.log() to calculate the natural logarithm
+    let x = 2;
+    let exp = Math.exp(x);
+    console.log("Exp:", exp);
+    let log = Math.log(exp);
+    console.log("Log:", log);
+
+    // Don't worry if you cannot follow along mathematically, you'll figure this our whenever you'll need it for your programming
+}
+
+console.log("PRACTICE EXERCISE 8.6");
+{
+    // experiment with the Math object with the following steps
+    // output the value of PI to the console using Math
+    console.log(Math.PI); // remember PI is not a method
+
+    // using Math, get the ceil() valye of 5.7, get the floor() of 5.7, get the round() of 5.7, and output to console
+    let step2 = 5.7;
+    console.log("Math.ceil(step2) when step2 =", step2, "is", Math.ceil(step2)); // returns 6
+    console.log("Math.floor(step2) when step2 =", step2, "is", Math.floor(step2)); // returns 5
+    console.log("Math.round(step2) when step2 =", step2, "is", Math.round(step2)); // returns 6
+
+    // output a random value to the console
+    console.log("random value 1-100 using Math.random()", Math.random() * 100);
+
+    // use Math.floor() and Math.random() to get a number between 0-10
+    console.log("random value 0-10 using Math.random()", Math.floor(Math.random() * 11));
+
+    // use Math.floor() and Math.random() to get a number between 1-10
+    console.log("random value 1-10 using Math.random()", Math.floor(Math.random() * 10) + 1);
+
+    // use Math.floor() and Math.random() to get a number between 1-100
+    console.log("random value 1-100 using Math.random()", Math.floor(Math.random() * 100) + 1);
+    
+    // create a function to generate a random number using the paramenters of min() and max(), 
+    // run the function 100 times returning to the console each time.
+    function oneHundredTimes(min, max) {
+        return Math.floor(Math.random() * (max - min + 1) + min); // not exactly sure what is happening here
+    }
+    for(let i = 0; i < 100; i++) {
+        console.log(oneHundredTimes(1, 100));
+    }
+}
