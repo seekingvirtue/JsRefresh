@@ -405,7 +405,7 @@ console.log("Uppercase and lowercase");
     console.log(first_capital);
 }
 
-console.log("The start and end of a strng");
+console.log("The start and end of a string");
 {
     // sometimes you want to check what a string starts with and ends with?
     // examine startsWith();
@@ -784,5 +784,30 @@ console.log("PRACTICE EXERCISE 8.7");
     console.log(myDate.getFullYear());
     console.log(myDate.getMonth());
 
-    console.log(arrOfMonths[myDate.getMonth() - 1]);
+    console.log(arrOfMonths[myDate.getMonth()]);
+}
+
+console.log("CHAPTER PROJECTS");
+console.log("Word scrambler");
+{
+    // create a function that returns a valye of a word, and scrables the letter order with Math.random();
+    
+    let word = "impossible";
+    //console.log(word.length);
+
+    function scramble(string) {
+        let stringLength = string.length;
+        let tempStr = "";
+        for (let i = 0; i < stringLength; i++) {
+            let randomLetter = Math.floor(Math.random() * string.length);
+            tempStr += string[randomLetter]; // had to look this up, I was not sure how to add to an empty string
+            console.log(tempStr);
+
+            string = string.substr(0, randomLetter) + string.substr(randomLetter + 1); // i had to look this part up, not real sure what is happening here
+            console.log(string);
+        }
+        return tempStr;
+    }
+
+    console.log(scramble(word));
 }
