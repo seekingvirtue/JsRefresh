@@ -676,3 +676,113 @@ console.log("PRACTICE EXERCISE 8.6");
         console.log(oneHundredTimes(1, 100));
     }
 }
+
+console.log("DATE METHODS");
+console.log("Creating dates");
+{
+    // there are different ways to create a date using differen constructors
+    let currentDateTime = new Date();
+    console.log(currentDateTime); // returns current date and time
+
+    // there is a similar method, Date.now() that will loc the current time represented in seconds since January 1st 1970
+    let now2 = Date.now();
+    console.log(now2); // logs a big number
+
+    // we can add 1000 milliseconds to the Unix epoch of January 1st, 1970
+    let milliDate = new Date(1000);
+    console.log(milliDate);
+
+    // JavaScript can also convert many string formats to a date.
+    // always mind the order in which days and months of dates are presented in the date formate and the interpreter of JavaScript
+    // this can vary depending on region
+    let stringDate = new Date("Sat Jun 05 2021 12:40:12 GMT+0200");
+    console.log(stringDate);
+
+    // you can also specify a specific date using the constructor
+    let specificDate = new Date(2022, 1, 10, 12, 10, 15, 100); // important note, the second parameter is for the month, 0 is for January, and 11 is for December
+    console.log(specificDate);
+}
+
+console.log("Methods to get and set the elements of a date.");
+{
+    // now that we can create dates, lets get certain parts of dates
+    // this is done with one of many get methods, which you use, depends on what you need
+    let d = new Date();
+    console.log("Day of week:", d.getDay());
+    console.log("Day of month:", d.getDate());
+    console.log("Month:", d.getMonth());
+    console.log("Year", d.getFullYear());
+    console.log("Seconds:", d.getSeconds());
+    console.log("Milliseconds:", d.getMilliseconds());
+    console.log("Time:", d.getTime());
+
+    // you can set the date in a similar way with a set method.
+    // the original date object DOES get changed here with the set methods
+    d.setFullYear(2010);
+    console.log(d);
+    
+    d.setMonth(9);
+    console.log(d);
+
+    // in order to set the day, we do not use setDay(), but rather setDate()
+    d.setDate(10);
+    console.log(d);
+
+    // you can even set the hours above 24, it will just roll over to the next day
+    // the setTime() actually overrides the complete date with the inserted epoch time
+    d.setTime(1622889770682);
+    console.log(d);
+}
+
+console.log("Parsing Dates");
+{
+    // with the built-in parse() method we can parse epoch dates from strings
+    // it accepts many formats, but you have to be careful with the order of days and months
+    let d1 = Date.parse("June 5, 2021");
+    console.log(d1); // logs in epoch format
+
+    // again, with different format
+    let d2 = Date.parse("6/5/2021");
+    console.log(d2);
+
+    // the input for Date.parse() is ISO formats, so several can be parse
+}
+
+console.log("Converting a date to a string");
+{
+    // we can also convert dates back to strings
+    let d1 = new Date();
+    console.log(d1.toDateString());
+
+    // here is another methods that converts it differently
+    console.log(d1.toLocaleDateString());
+}
+
+console.log("PRACTICE EXERCISE 8.7");
+{
+    // output the date with the full month name into the console
+    // when converting to or from arrays, remember they are zero based
+    let myDate = new Date();
+    console.log(myDate);
+
+    let arrOfMonths = [
+        "January",
+        "February",
+        "March",
+        "April",
+        "May",
+        "June",
+        "July",
+        "August",
+        "September",
+        "October",
+        "November",
+        "December"
+    ];
+
+    console.log(myDate.getDate());
+    console.log(myDate.getFullYear());
+    console.log(myDate.getMonth());
+
+    console.log(arrOfMonths[myDate.getMonth() - 1]);
+}
