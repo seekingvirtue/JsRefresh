@@ -798,7 +798,7 @@ console.log("Word scrambler");
     function scramble(string) {
         let stringLength = string.length;
         let tempStr = "";
-        for (let i = 0; i < stringLength; i++) {
+        for (let i = 0; i < stringLength; i++) { 
             let randomLetter = Math.floor(Math.random() * string.length);
             tempStr += string[randomLetter]; // had to look this up, I was not sure how to add to an empty string
             console.log(tempStr);
@@ -810,4 +810,44 @@ console.log("Word scrambler");
     }
 
     console.log(scramble(word));
+}
+
+console.log("Countdown timer");
+{
+    // create code for a countdown timer that can be executed in the console window
+    // it should show the total milliseconds, days, hours, minutes, and seconds remaining until the target date is reached
+    
+    // let targetDate = new Date("12/25/2023")
+    // let stringTargetDate = targetDate.toDateString();
+
+    // function endDate() {
+    //     let dateDifference = Date.parse(stringTargetDate) - new Date() // get the difference between now and target date
+        
+    //     let days = Math.floor(dateDifference / 86400000); // calculate total number of days between now and target date
+    //     let hours = Math.floor((dateDifference / (1000 * 60 * 60)) % 24);  // I had to look all the rest of this up
+    //     let minutes = Math.floor((dateDifference / 1000 / 60) % 60);
+    //     let seconds = Math.floor((dateDifference / 1000) % 60);
+
+    //     return {
+    //         days,
+    //         hours,
+    //         minutes,
+    //         seconds
+    //     }
+    // }
+
+    // function update() {
+    //     let temp = endDate();
+    //     let output = "";
+
+    //     for (const property in temp) {
+    //         output += (`${property}: ${temp[property]} `);
+    //         console.log(output);
+    //         setTimeout(update, 1000);
+    //     }
+
+    // }
+    
+    // update();
+
 }
