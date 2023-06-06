@@ -67,3 +67,40 @@ console.log("PRACTICE EXERCISE 9.2");
     console.log("location's href:", window.location.href);
 }
 
+console.log("The DOM");
+{
+    // the DOM is not very complicated
+    // It is a way of displaying the structure of an HTML document as a logical tree
+    console.log("Additional DOM properties");
+    
+    // the document object represents the DOM
+    console.dir(document);
+}
+
+console.log("Selecting page elements");
+{
+    // the document object conaints many properties and methods.
+    // to select page elements to use within your JavaScript, we can use either querySelector() or querySelectorAll()
+    // both querySelector() and querySelectorAll() can be used to select page elements by tag name, ID, or class
+    
+    // querySelector() will return the first element in the document that matches the specified selector
+    // to return multiple matching elements, use document.querySelectorAll()
+
+    const ele1 = document.querySelector("h1");
+    console.dir(ele1);
+
+    // to seem multiple
+    const eles = document.querySelectorAll(".output");
+    console.dir(eles);
+}
+
+console.log("PRACTICE EXERCISE 9.3");
+{
+    // select a page element andupdate the content, change the style, and add attributes
+    console.log("see 9.3Exercise.html");
+}
+
+console.log("CHAPTER PROJECT");
+{
+    console.log("see ChapterProject.html");
+}

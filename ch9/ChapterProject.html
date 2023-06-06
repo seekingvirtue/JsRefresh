@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <div class="output">
+        
+        <h1>Hello</h1>        
+        <div>Test</div>
+        <ul>
+            <li id="one">One</li>
+            <li class="red">Two</li>
+        </ul>
+    </div>
+    <script>
+        const output = document.querySelector(".output");
+        const mainList = output.querySelector("ul");
+        mainList.id = "mainList";
+        const divName = document.querySelectorAll("div")
+        console.log(divName);
+
+        for (i = 0; i < divName.length; i++) {
+            divName[i].id = i + 1;
+            if (i % 2) {
+                divName[i].style.color = "red";
+            } else {
+                divName[i].style.color = "blue";
+            }
+        }
+
+    </script>
+</html>
