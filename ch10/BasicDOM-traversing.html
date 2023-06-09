@@ -26,4 +26,16 @@
         console.dir(document.body.childNodes[3].childNodes[3].childNodes[1].children.treasure);
     </script>
 
+    <!-- Moving up through the DOM-->
+    <script>
+        console.dir(document.body.children.forest.children.tree2.parentElement);
+    </script>
+
+    <!-- Moving side-ways through the DOM-->
+    <script>
+        console.dir(document.body.children.forest.children.tree2);
+        console.dir(document.body.children.forest.children.tree1.nextElementSibling);
+        console.dir(document.body.children.forest.children.tree2.previousElementSibling);
+    </script>
+
 </html>
