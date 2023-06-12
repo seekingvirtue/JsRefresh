@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <h1>Welcome page</h1>
+    <p id="greeting">Hi!</p>
+</body>
+
+<!-- changing innerText (case sensitive)-->
+<script>
+    console.dir(document.body.children.greeting);
+    console.log(document.body.children.greeting.innerText);
+    document.body.children.greeting.innerText = "Bye!";
+    console.log(document.body.children.greeting.innerText);    
+</script>
+
+<!-- changing innerHTML (also case sensitive) -->
+<script>
+    document.body.children.greeting.innerText = "<p>Bye!</p>";
+    document.body.children.greeting.innerHTML = "<b>Bye!</b>";
+</script>
+
+</html>
