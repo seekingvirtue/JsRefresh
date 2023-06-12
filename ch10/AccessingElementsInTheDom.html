@@ -8,9 +8,19 @@
     <div id="three" class="something">Hi!</div>
 </body>
 
-    <!--Accessing elements by ID-->
+    <!-- Accessing elements by ID-->
     <script>
         console.log(document.getElementById("two"));
     </script>
+
+    <!-- Access elements by name tag-->
+    <script>
+        console.log(document.getElementsByTagName("div"));
+        console.dir(document.getElementsByTagName("div").item(1)); // access by index
+        console.log(document.getElementsByTagName("div").namedItem("one")); // access by name
+        console.log(document.getElementsByTagName("h1"));
+    </script>
+
+    
 
 </html>
