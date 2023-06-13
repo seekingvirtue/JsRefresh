@@ -27,4 +27,15 @@
         console.log(document.getElementsByClassName("something"));
     </script>
 
+    <!-- Accessing elements with a CSS selector-->
+    <script>
+        console.dir(document.querySelectorAll("div")); // select all div elements
+        console.dir(document.querySelectorAll("div.example")); // select all div elements that have example as a class
+        console.dir(document.querySelectorAll("#one")) // select all elements with id="one"
+
+        // using querySelector you can only use valid CSS selectors: elements, classes, and IDs
+        console.log(document.querySelector("div")); // only returns the first div
+        console.log(document.querySelector(".something")); // selecting an element with the class of .something
+    </script>
+
 </html>
