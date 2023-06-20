@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- Create a button within a basic HTML document and add the onclick attribute-->
+    <div id="one" class="test">
+        <p id="two" class="test" onclick="message(this)">Hello world</p>
+        <button id="three" class="test" onclick="message(this.parentElement)">Push Me</button>
+    </div>
+</body>
+
+<script>
+    // create a function to handle a click
+    function message(el) {
+        console.log("Hidden message activated");
+        console.dir(el);
+    }
+</script>
+
+</html>
